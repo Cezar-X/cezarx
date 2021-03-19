@@ -1,0 +1,28 @@
+{
+  "name": "CezarX",
+  "author": "CezarX",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "start": "next",
+    "build": "next build && next export"
+  },
+  "dependencies": {
+    "@ethersproject/providers": "^5.0.2",
+    "@ethersproject/units": "^5.0.1",
+    "@web3-react/core": "latest",
+    "@web3-react/fortmatic-connector": "latest",
+    "@web3-react/injected-connector": "latest",
+    "@web3-react/walletconnect-connector": "latest",
+    "@web3-react/walletlink-connector": "latest",
+    "babel-plugin-styled-components": "^1.12.0",
+    "evergreen-ui": "^5.1.2",
+    "next": "^9.2.1",
+    "react": ">=16.8",
+    "react-dom": ">=16.8",
+    "styled-components": "^5.2.1",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.3"
+  }
+}
