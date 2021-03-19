@@ -7,20 +7,20 @@
     "build": "next build && next export"
   },
   "dependencies": {
-    "@ethersproject/providers": "^5.0.2",
-    "@ethersproject/units": "^5.0.1",
-    "@web3-react/core": "latest",
-    "@web3-react/fortmatic-connector": "latest",
+    "@ethersproject/providers": "^5.0.24",
+    "@ethersproject/units": "^5.0.11",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/fortmatic-connector": "^6.1.6",
     "@web3-react/injected-connector": "latest",
-    "@web3-react/walletconnect-connector": "latest",
-    "@web3-react/walletlink-connector": "latest",
+    "@web3-react/walletconnect-connector": "^6.1.9",
+    "@web3-react/walletlink-connector": "^6.1.9",
     "babel-plugin-styled-components": "^1.12.0",
     "evergreen-ui": "^5.1.2",
-    "next": "^9.2.1",
+    "next": "^10.0.9",
     "react": ">=16.8",
     "react-dom": ">=16.8",
     "styled-components": "^5.2.1",
-    "typescript": "^3.7.5"
+    "typescript": "^4.2.3"
   },
   "devDependencies": {
     "@types/react": "^17.0.3"

@@ -16,7 +16,7 @@ import { UserRejectedRequestError as UserRejectedRequestErrorWalletConnect } fro
 import { Spinner } from './Spinner'
 
 enum ConnectorNames {
-  Injected = 'Injected',
+  Injected = 'Metamask',
   WalletConnect = 'WalletConnect',
   WalletLink = 'WalletLink',
   Fortmatic = 'Fortmatic',
