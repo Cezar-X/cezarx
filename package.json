@@ -18,6 +18,7 @@
     "evergreen-ui": "^5.1.2",
     "next": "^10.0.9",
     "react": ">=16.8",
+    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": ">=16.8",
     "react-router-dom": "^5.2.0",
     "styled-components": "^5.2.1",

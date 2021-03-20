@@ -73,11 +73,11 @@ function App() {
           <DashboardWrapper>
             <Background/>
             <Switch>
-              <Route exact strict path="/app/dashboard" component={Dashboard} />
-              <Route exact strict path="/app/deposit" component={Deposit} />
-              <Route exact strict path="/app/borrow" component={Borrow} />
-              <Route exact strict path="/app/auction" component={Auction} />
-              <Route exact strict path="/app/underconstruction" component={UnderConstruction} />
+              <Route exact path="/app/dashboard" component={Dashboard} />
+              <Route exact path="/app/deposit" component={Deposit} />
+              <Route exact path="/app/borrow" component={Borrow} />
+              <Route exact path="/app/auction" component={Auction} />
+              <Route exact path="/app/underconstruction" component={UnderConstruction} />
               <Redirect to="/app/dashboard" />
             </Switch>
           </DashboardWrapper>

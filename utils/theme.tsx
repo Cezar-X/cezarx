@@ -82,3 +82,9 @@ export const Background = styled.div`
   background-size: 100%;
   background-attachment: fixed;
 `
+
+export const InputWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
