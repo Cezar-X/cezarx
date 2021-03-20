@@ -13,6 +13,8 @@ import UnderConstruction from './underconstruction';
 import { DashboardWrapper, Background } from '../../utils/theme';
 import Deposit from './deposit';
 import BorrowNoCollateral from './borrowNoCollateral';
+import Repay from './repay';
+import Repaid from './repaid';
 
 export default function() {
   return (
@@ -78,6 +80,8 @@ function App() {
               <Route exact path="/app/lend" component={Lend} />
               <Route exact path="/app/borrow" component={Borrow} />
               <Route exact path="/app/borrowNoCollateral" component={BorrowNoCollateral} />
+              <Route exact path="/app/repay" component={Repay} />
+              <Route exact path="/app/repaid" component={Repaid} />
               <Route exact path="/app/deposit" component={Deposit} />
               <Route exact path="/app/auction" component={Auction} />
               <Route exact path="/app/appraise" component={Appraise} />

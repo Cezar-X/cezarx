@@ -95,7 +95,7 @@ export function Header() {
           : 
           <>
             <Menu>
-              <StyledLink activeClassName='is-active' to="/app/borrowNoCollateral">Borrow</StyledLink>
+              <StyledLink activeClassName='is-active' to="/app/borrow">Borrow</StyledLink>
               <StyledLink activeClassName='is-active' to="/app/lend">Lend</StyledLink>
               <StyledLink activeClassName='is-active' to="/app/auction">Auction</StyledLink>
               <StyledLink activeClassName='is-active' to="/faq">FAQ</StyledLink>

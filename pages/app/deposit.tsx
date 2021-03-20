@@ -1,4 +1,3 @@
-import { Select } from 'evergreen-ui'
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom"
 import styled from 'styled-components'
@@ -23,14 +22,6 @@ const Tile = styled.div`
 
   p {
     margin-bottom: var(--space-m);
-  }
-`
-
-const StyledSelect = styled(Select)`
-  margin-left: var(--space-xs);
-  select {
-    font-size: var(--font-size-l);
-    background: var(--grey-lightest);
   }
 `
 

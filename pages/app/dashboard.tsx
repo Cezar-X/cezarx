@@ -12,6 +12,7 @@ const Tile = styled.div`
 
   button {
     justify-content: center;
+    margin-top: auto;
   }
 `
 
@@ -46,19 +47,6 @@ export default function Dashboard() {
         </Tile>
         <Tile>
           <h4>
-            Your Collateral
-          </h4>
-          <p>Ξ7247 (1 NFT)</p><br/>
-          <h4>
-            Your Borrowing Power
-          </h4>
-          <p>Ξ7247 * 50% = Ξ362</p><br/>
-          <SecondaryButton onClick={() => history.push('/app/borrow')}>Borrow Now</SecondaryButton>
-        </Tile>
-        <Tile>
-        </Tile>
-        <Tile>
-          <h4>
             1 Loan Per User
           </h4>
           <p>
@@ -67,20 +55,46 @@ export default function Dashboard() {
         </Tile>
         <Tile>
           <h4>
-            Appraise Your NFT
-          </h4>
-          <p>
-            You can appraise your NFT to see how much loan you will be eligible for before depositing the NFT as collateral.
-          </p><br/>
-          <SecondaryButton onClick={() => history.push('/app/appraise')}>Appraise</SecondaryButton>
-        </Tile>
-        <Tile>
-          <h4>
             Exclusive Auctions
           </h4>
           <p>
-            When our users default, the NFTs will be owned by the liquidity pool. Liquidity pool providers will be eligible to participate in the NFT auction held on a later date.
+            When the loans default, the NFTs will be owned by the liquidity pool. Liquidity pool providers will be eligible to participate in the NFT auction held on a later date.
           </p>
+        </Tile>
+        <Tile>
+          <h4>
+            Your Collateral
+          </h4>
+          <p>Ξ5,435 (1 NFT)</p><br/>
+          <h4>
+            Your Borrowing Power
+          </h4>
+          <p>Ξ0</p>
+          <SecondaryButton onClick={() => history.push('/app/borrowNoCollateral')}>Borrow Now</SecondaryButton>
+        </Tile>
+        <Tile>
+          <h4>
+            Appraise Your NFT
+          </h4>
+          <p>
+            Check your NFT to see if it will be accepted as collateral.
+          </p>
+          <SecondaryButton onClick={() => history.push('/app/appraise')}>Appraise</SecondaryButton>
+        </Tile>
+        <Tile>
+          <h4>NFT Auction on 30 Apr</h4>
+          <p>
+            Provide liquidity of more than Ξ5 before 28 Apr 00:00 UTC to get a chance to participate in the auction! 
+          </p>
+          <SecondaryButton onClick={() => history.push('/app/lend')}>Add Liquidity</SecondaryButton>
+        </Tile>
+        <Tile>
+          <h4>
+            Your Open Loan
+          </h4>
+          <p>Ξ2717.5 + 20% APR for 40 days</p>
+          <p>Countdown: 13d 23h 18m</p>
+          <SecondaryButton onClick={() => history.push('/app/repay')}>Repay Now</SecondaryButton>
         </Tile>
       </GridWrapper>
     </DashboardWrapper>
