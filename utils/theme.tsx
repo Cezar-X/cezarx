@@ -61,7 +61,7 @@ export const Wrapper = styled.div`
 
 export const GridWrapper = styled.div`
   display: grid;
-  grid-template-rows: repeat(3, 33%);
+  grid-template-rows: repeat(3, 250px);
   grid-template-columns: repeat(4, calc((100% - var(--space-m) * 3) / 4));
   gap: var(--space-m);
   position: relative;
