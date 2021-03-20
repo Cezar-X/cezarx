@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy&display=swap');
 
 :root {
+  --font-size-xl: 30px;
+  --font-size-l: 24px;
   --font-size-m: 16px;
+  --space-xl: 40px;
   --space-l: 30px;
   --space-m: 20px;
   --space-s: 14px;
@@ -16,6 +20,10 @@
   --grey-lighter: #dedada;
   --grey-lightest: #ededed;
   --box-shadow: 0 8px 12px rgba(0,0,0,0.06);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {

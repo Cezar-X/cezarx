@@ -65,8 +65,10 @@ export function Header() {
           : 
           <>
             <Menu>
+              <StyledLink href="/app/auction">Auction</StyledLink>
               <StyledLink href="/app/dashboard">Dashboard</StyledLink>
               <StyledLink href="/app/deposit">Deposit</StyledLink>
+              <StyledLink href="/app/stats">Stats</StyledLink>
             </Menu>
             <UserDetails>
               <Account />
