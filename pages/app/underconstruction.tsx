@@ -6,7 +6,6 @@ const Tile = styled.div`
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 200px;
   font-size: var(--font-size-l);
   color: var(--grey-darkest);
   background: white;
@@ -16,15 +15,15 @@ const Tile = styled.div`
   box-shadow: var(--box-shadow);
 `
 
-export default function Borrow() {
-  const hasNFTCollateral = true;
+export default function UnderConstruction() {
   return (
     <Wrapper>
       <Tile>
-        <h3>Borrow WETH</h3>
+        <h3>Under Construction</h3>
         <p>
-          
+          Come back later!
         </p>
+        <iframe src="https://giphy.com/embed/1wbV299AFXDaZLjj7j" width="100%" height="480" frameBorder="0" allowFullScreen></iframe>
       </Tile>
     </Wrapper>
   )

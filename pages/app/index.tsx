@@ -9,6 +9,9 @@ import Web3ReactManager from '../../components/Web3ReactManager';
 import Deposit from './deposit';
 import Dashboard from './dashboard';
 import Borrow from './borrow';
+import Auction from './auction';
+import UnderConstruction from './underconstruction';
+import { DashboardWrapper, Background } from '../../utils/theme';
 
 export default function() {
   return (
@@ -67,12 +70,17 @@ function App() {
       <Web3ReactManager>
         <BrowserRouter>
           <Header/>
-          <Switch>
-            <Route exact strict path="/app/dashboard" component={Dashboard} />
-            <Route exact strict path="/app/deposit" component={Deposit} />
-            <Route exact strict path="/app/borrow" component={Borrow} />
-            <Redirect to="/app/dashboard" />
-          </Switch>
+          <DashboardWrapper>
+            <Background/>
+            <Switch>
+              <Route exact strict path="/app/dashboard" component={Dashboard} />
+              <Route exact strict path="/app/deposit" component={Deposit} />
+              <Route exact strict path="/app/borrow" component={Borrow} />
+              <Route exact strict path="/app/auction" component={Auction} />
+              <Route exact strict path="/app/underconstruction" component={UnderConstruction} />
+              <Redirect to="/app/dashboard" />
+            </Switch>
+          </DashboardWrapper>
         </BrowserRouter>
       </Web3ReactManager>
     </>

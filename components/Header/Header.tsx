@@ -69,7 +69,7 @@ export function Header() {
               <StyledLink to="/app/deposit">Deposit</StyledLink>
               <StyledLink to="/app/borrow">Borrow</StyledLink>
               <StyledLink to="/app/auction">Auction</StyledLink>
-              <StyledLink to="/app/stats">Stats</StyledLink>
+              <StyledLink to="/app/underconstruction">Stats</StyledLink>
             </Menu>
             <UserDetails>
               <Account />

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import styled from 'styled-components';
 import { Wrapper } from '../../utils/theme';
 
@@ -16,15 +17,12 @@ const Tile = styled.div`
   box-shadow: var(--box-shadow);
 `
 
-export default function Borrow() {
-  const hasNFTCollateral = true;
+export default function Stats() {
   return (
     <Wrapper>
       <Tile>
-        <h3>Borrow WETH</h3>
-        <p>
-          
-        </p>
+        <h3>Stats</h3>
+        <p></p>
       </Tile>
     </Wrapper>
   )

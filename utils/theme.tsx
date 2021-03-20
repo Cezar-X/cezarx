@@ -47,3 +47,38 @@ export const ButtonWrapper = styled.div`
   align-items: center;
   padding: var(--space-l) 0 var(--space-xs);
 `
+
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  flex-wrap: wrap;
+  height: var(--body-height);
+  padding-top: var(--space-xxxl);
+  backdrop-filter: grayscale(92%) contrast(100%) brightness(40%);
+`
+
+export const GridWrapper = styled.div`
+  display: grid;
+  grid-template-rows: repeat(3, 33%);
+  grid-template-columns: repeat(4, calc((100% - var(--space-m) * 3) / 4));
+  gap: var(--space-m);
+  position: relative;
+  height: var(--body-height);
+  padding: var(--space-xxxl) var(--space-m);
+  backdrop-filter: grayscale(92%) contrast(100%) brightness(40%);
+`
+
+export const DashboardWrapper = styled.div`
+  position: relative;
+`
+export const Background = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/caesar2.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+`

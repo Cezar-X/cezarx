@@ -3,15 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Balance } from '../../components/Header/Balance'
 import { Header } from '../../components/Header/Header'
-import { ButtonWrapper, SecondaryButton, StyledInput } from '../../utils/theme'
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: var(--body-height);
-  padding-top: var(--space-xxxl);
-`
+import { ButtonWrapper, SecondaryButton, StyledInput, Wrapper } from '../../utils/theme'
 
 const Tile = styled.div`
   display: flex;
