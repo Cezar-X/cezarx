@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Button, Dialog } from 'evergreen-ui';
 
 export const StyledInput = styled.input`
@@ -87,4 +88,16 @@ export const InputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`
+
+export const TextLink = styled(Link)`
+  color: var(--grey-darker);
+
+  &:hover {
+    color: var(--grey-dark);
+  }
+`
+
+export const Hint = styled.p`
+  font-size: var(--font-size-s);
 `

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Balance } from '../../components/Header/Balance'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { ButtonWrapper, InputWrapper, SecondaryButton, StyledInput, Wrapper } from '../../utils/theme'
+import { ButtonWrapper, Hint, InputWrapper, SecondaryButton, StyledInput, Wrapper } from '../../utils/theme'
 
 const Tile = styled.div`
   display: flex;
@@ -76,8 +76,10 @@ export default function Deposit() {
       <Tile>
         <h3>
           Deposit
-          <StyledSelect onChange={event => setIsNFT(event.target.value === "nft")}>
-            <option value="weth" selected>WETH</option>
+          <StyledSelect 
+            defaultValue="weth"
+            onChange={event => setIsNFT(event.target.value === "nft")}>
+            <option value="weth">WETH</option>
             <option value="nft">NFT</option>
           </StyledSelect>
         </h3>
@@ -93,11 +95,13 @@ export default function Deposit() {
               </CopyToClipboard>
               {copied ? <span>Copied!</span> : null }
             </CopyWrapper>
+            <Hint>If your NFT does not meet our appraisal criteria, it will be rejected.</Hint>
           </>
           : 
           <>
             <p>
-              Available Balance: <Balance />
+              Available Balance: <Balance /><br/>
+              Deposit APY: 13%
             </p>
             <InputWrapper>
               <StyledInput
