@@ -1,7 +1,9 @@
+import { Button, Pane, Paragraph, Tab, Tablist, TextInput } from 'evergreen-ui'
 import React from 'react'
-import styled from 'styled-components';
-import { Balance } from '../../components/Header/Balance';
-import { Header } from '../../components/Header/Header';
+import styled from 'styled-components'
+import { Balance } from '../../components/Header/Balance'
+import { Header } from '../../components/Header/Header'
+import { ButtonWrapper, SecondaryButton, StyledInput } from '../../utils/theme'
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,7 +17,6 @@ const Tile = styled.div`
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 200px;
   font-size: var(--font-size-l);
   color: var(--grey-darkest);
   background: white;
@@ -23,16 +24,44 @@ const Tile = styled.div`
   margin: var(--space-l);
   border-radius: 12px;
   box-shadow: var(--box-shadow);
+
+  input {
+    max-width: 80%;
+  }
+
+  p {
+    margin-bottom: var(--space-m);
+  }
+`
+
+const InputWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
 
 export default function Deposit() {
   return (
     <Wrapper>
       <Tile>
-        <h3>Deposit</h3>
+        <h3>Deposit WETH</h3>
         <p>
-          Available Balance: <Balance/>
+          Available Balance: <Balance />
         </p>
+        <InputWrapper>
+          <StyledInput
+            title="Token Amount"
+            inputMode="decimal"
+            type="number"
+            placeholder="0.0"
+            minLength={1}
+            maxLength={20}
+          />
+          WETH
+        </InputWrapper>
+        <ButtonWrapper>
+          <SecondaryButton>Deposit</SecondaryButton>
+        </ButtonWrapper>
       </Tile>
     </Wrapper>
   )

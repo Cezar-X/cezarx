@@ -8,6 +8,7 @@ import { defaultTheme, ThemeProvider } from 'evergreen-ui';
 import Web3ReactManager from '../../components/Web3ReactManager';
 import Deposit from './deposit';
 import Dashboard from './dashboard';
+import Borrow from './borrow';
 
 export default function() {
   return (
@@ -67,8 +68,9 @@ function App() {
         <BrowserRouter>
           <Header/>
           <Switch>
-            <Route exact strict path="/app/deposit" component={Deposit} />
             <Route exact strict path="/app/dashboard" component={Dashboard} />
+            <Route exact strict path="/app/deposit" component={Deposit} />
+            <Route exact strict path="/app/borrow" component={Borrow} />
             <Redirect to="/app/dashboard" />
           </Switch>
         </BrowserRouter>
