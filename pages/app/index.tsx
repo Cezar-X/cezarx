@@ -2,14 +2,13 @@ import React from 'react'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import styled from 'styled-components';
 
-import { useEagerConnect, useInactiveListener } from '../../hooks'
 import { Header } from '../../components/Header/Header'
-import { defaultTheme, ThemeProvider } from 'evergreen-ui';
 import Web3ReactManager from '../../components/Web3ReactManager';
 import Deposit from './deposit';
 import Dashboard from './dashboard';
 import Borrow from './borrow';
 import Auction from './auction';
+import Appraise from './appraise';
 import UnderConstruction from './underconstruction';
 import { DashboardWrapper, Background } from '../../utils/theme';
 
@@ -77,6 +76,7 @@ function App() {
               <Route exact path="/app/deposit" component={Deposit} />
               <Route exact path="/app/borrow" component={Borrow} />
               <Route exact path="/app/auction" component={Auction} />
+              <Route exact path="/app/appraise" component={Appraise} />
               <Route exact path="/app/underconstruction" component={UnderConstruction} />
               <Redirect to="/app/dashboard" />
             </Switch>

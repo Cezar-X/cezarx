@@ -62,11 +62,11 @@ export const Wrapper = styled.div`
 export const GridWrapper = styled.div`
   display: grid;
   grid-template-rows: repeat(3, 250px);
-  grid-template-columns: repeat(4, calc((100% - var(--space-m) * 3) / 4));
-  gap: var(--space-m);
+  grid-template-columns: repeat(4, calc((100% - var(--space-l) * 3) / 4));
+  gap: var(--space-l);
   position: relative;
   height: var(--body-height);
-  padding: var(--space-xxxl) var(--space-m);
+  padding: var(--space-xxxl) var(--space-l);
   backdrop-filter: grayscale(92%) contrast(100%) brightness(40%);
 `
 

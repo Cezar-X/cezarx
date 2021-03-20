@@ -4,33 +4,55 @@ import styled from 'styled-components'
 import { Logo } from '../Logo'
 import { Account } from './Account'
 import { Balance } from './Balance'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`
+
+const MenuSubwrapper = styled.div`
   padding: var(--space-m);
-`;
+`
 
 const Menu = styled.div`
   display: flex;
-  align-items: center;
   justify-self: flex-end;
+  align-self: stretch;
   margin: 0 var(--space-m) 0 auto;
 
   a {
     margin: 0 var(--space-s);
   }
-`;
+`
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  position: relative;
   font-size: var(--font-size-m);
   color: var(--body-text-color);
   text-decoration: none;
 
-  &:hover {
+  &:hover,
+  &.is-active {
     color: var(--grey-light);
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 50%;
+    bottom: 0;
+    background: linear-gradient(12deg, rgba(129,129,129,1) 0%, rgba(139,139,139,1) 52%, rgba(115,115,115,1) 100%);
+    transform: translateX(-50%);
+    transition: all 0.15s;
   }
 `
 
@@ -53,29 +75,33 @@ export function Header() {
 
   return (
     <StyledHeader>
-      <a href="/">
-        <Logo width="100" height="20"/>
-      </a>
+      <MenuSubwrapper>
+        <a href="/">
+          <Logo width="100" height="20"/>
+        </a>
+      </MenuSubwrapper>
       {
         isLanding ? 
           <Menu>
-            <StyledLink to="/faq">FAQ</StyledLink>
-            <StyledLink to="/about">About</StyledLink>
+            <StyledLink activeClassName='is-active' to="/faq">FAQ</StyledLink>
+            <StyledLink activeClassName='is-active' to="/about">About</StyledLink>
           </Menu>
           : 
           <>
             <Menu>
-              <StyledLink to="/app/dashboard">Dashboard</StyledLink>
-              <StyledLink to="/app/deposit">Deposit</StyledLink>
-              <StyledLink to="/app/borrow">Borrow</StyledLink>
-              <StyledLink to="/app/underconstruction">Appraise</StyledLink>
-              <StyledLink to="/app/auction">Auction</StyledLink>
-              <StyledLink to="/app/underconstruction">Stats</StyledLink>
+              <StyledLink activeClassName='is-active' to="/app/dashboard">Dashboard</StyledLink>
+              <StyledLink activeClassName='is-active' to="/app/deposit">Deposit</StyledLink>
+              <StyledLink activeClassName='is-active' to="/app/borrow">Borrow</StyledLink>
+              <StyledLink activeClassName='is-active' to="/app/appraise">Appraise</StyledLink>
+              <StyledLink activeClassName='is-active' to="/app/auction">Auction</StyledLink>
+              <StyledLink activeClassName='is-active' to="/app/underconstruction">Stats</StyledLink>
             </Menu>
-            <UserDetails>
-              <Account />
-              <Balance />
-            </UserDetails>
+            <MenuSubwrapper>
+              <UserDetails>
+                <Account />
+                <Balance />
+              </UserDetails>
+            </MenuSubwrapper>
           </>
       }
     </StyledHeader>
