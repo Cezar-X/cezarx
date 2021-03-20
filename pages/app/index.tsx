@@ -4,13 +4,15 @@ import styled from 'styled-components';
 
 import { Header } from '../../components/Header/Header'
 import Web3ReactManager from '../../components/Web3ReactManager';
-import Deposit from './deposit';
+import Lend from './lend';
 import Dashboard from './dashboard';
 import Borrow from './borrow';
 import Auction from './auction';
 import Appraise from './appraise';
 import UnderConstruction from './underconstruction';
 import { DashboardWrapper, Background } from '../../utils/theme';
+import Deposit from './deposit';
+import BorrowNoCollateral from './borrowNoCollateral';
 
 export default function() {
   return (
@@ -73,8 +75,10 @@ function App() {
             <Background/>
             <Switch>
               <Route exact path="/app/dashboard" component={Dashboard} />
-              <Route exact path="/app/deposit" component={Deposit} />
+              <Route exact path="/app/lend" component={Lend} />
               <Route exact path="/app/borrow" component={Borrow} />
+              <Route exact path="/app/borrowNoCollateral" component={BorrowNoCollateral} />
+              <Route exact path="/app/deposit" component={Deposit} />
               <Route exact path="/app/auction" component={Auction} />
               <Route exact path="/app/appraise" component={Appraise} />
               <Route exact path="/app/underconstruction" component={UnderConstruction} />

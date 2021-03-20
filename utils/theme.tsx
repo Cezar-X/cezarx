@@ -31,9 +31,9 @@ export const SecondaryButton = styled(Button)`
   font-family: 'Inter', sans-serif;
   color: var(--grey-lightest);
   line-height: 1;
+  text-align: center;
   background: var(--bg-blue);
   padding: var(--space-xs) var(--space-xl);
-  border: 1px solid;
   border-radius: 4px;
   box-shadow: none;
 
@@ -62,7 +62,7 @@ export const Wrapper = styled.div`
 
 export const GridWrapper = styled.div`
   display: grid;
-  grid-template-rows: repeat(3, 250px);
+  grid-template-rows: repeat(3, 280px);
   grid-template-columns: repeat(4, calc((100% - var(--space-l) * 3) / 4));
   gap: var(--space-l);
   position: relative;
@@ -100,4 +100,5 @@ export const TextLink = styled(Link)`
 
 export const Hint = styled.p`
   font-size: var(--font-size-s);
+  text-align: center;
 `

@@ -2,8 +2,9 @@ import { Select } from 'evergreen-ui'
 import React, { useState } from 'react'
 import { useHistory } from "react-router-dom"
 import styled from 'styled-components'
+import { Balance } from '../../components/Header/Balance'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { Hint, SecondaryButton, Wrapper } from '../../utils/theme'
+import { ButtonWrapper, Hint, InputWrapper, SecondaryButton, StyledInput, Wrapper } from '../../utils/theme'
 
 const Tile = styled.div`
   display: flex;
@@ -67,7 +68,8 @@ const CTAWrapper = styled.div`
   padding: var(--space-l) 0 var(--space-xs);
 `
 
-export default function Deposit() {
+export default function Lend() {
+  const [isNFT, setIsNFT] = useState(false)
   const [copied, setCopied] = useState(false)
   const contractAddress = "0x123213213313213313213313213313213345435"
   const history = useHistory()
@@ -83,23 +85,26 @@ export default function Deposit() {
     <Wrapper>
       <Tile>
         <h3>
-          Deposit NFT
+          Lend WETH
         </h3>
         <p>
-          Please send your NFT to the following contract address.
+          Available Balance: <Balance /><br/>
+          Deposit APY: 13%
         </p>
-        <CopyWrapper>
-          <CopyToClipboard text={contractAddress}
-            onCopy={copyAddress}>
-            <CopyField value={contractAddress} />
-          </CopyToClipboard>
-          {copied ? <span>Copied!</span> : null }
-        </CopyWrapper>
-        <Hint>If your NFT does not meet our appraisal criteria, it will be returned to you immediately.</Hint>
-        <CTAWrapper>
-          <p>Already deposited the NFT?</p>
-          <SecondaryButton onClick={() => history.push('/app/borrow')}>Borrow Now</SecondaryButton>
-        </CTAWrapper>
+        <InputWrapper>
+          <StyledInput
+            title="Token Amount"
+            inputMode="decimal"
+            type="number"
+            placeholder="0.0"
+            minLength={1}
+            maxLength={20}
+          />
+          WETH
+        </InputWrapper>
+        <ButtonWrapper>
+          <SecondaryButton>Deposit</SecondaryButton>
+        </ButtonWrapper>
       </Tile>
     </Wrapper>
   )

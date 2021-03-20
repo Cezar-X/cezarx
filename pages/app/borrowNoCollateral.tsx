@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
-import { ButtonWrapper, InputWrapper, SecondaryButton, StyledInput, Wrapper } from '../../utils/theme';
+import { useHistory } from "react-router-dom"
+import { ButtonWrapper, SecondaryButton, Wrapper } from '../../utils/theme';
 
 const Tile = styled.div`
   display: flex;
@@ -19,32 +20,22 @@ const Tile = styled.div`
   }
 
   p {
-    margin-bottom: var(--space-m);
+    margin-bottom: 0;
   }
 `
 
-export default function Borrow() {
+export default function BorrowNoCollateral() {
+  const history = useHistory()
   return (
     <Wrapper>
       <Tile>
         <h3>Borrow WETH</h3>
         <p>
-          Borrowing Power: Ξ362<br/>
-          Interest Rate: 20% APR
+          Before you can borrow WETH, you'll have to first deposit a NFT.<br/><br/>
+          Let's check if your NFT is a suitable collateral!
         </p>
-        <InputWrapper>
-          <StyledInput
-            title="Token Amount"
-            inputMode="decimal"
-            type="number"
-            placeholder="0.0"
-            minLength={1}
-            maxLength={20}
-          />
-          WETH
-        </InputWrapper>
         <ButtonWrapper>
-          <SecondaryButton>Borrow</SecondaryButton>
+          <SecondaryButton onClick={() => history.push('/app/appraise')}>Appraise NFT</SecondaryButton>
         </ButtonWrapper>
       </Tile>
     </Wrapper>

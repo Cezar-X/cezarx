@@ -1,6 +1,7 @@
 import React from 'react'
+import { useHistory } from "react-router-dom"
 import styled from 'styled-components';
-import { Background, DashboardWrapper, GridWrapper } from '../../utils/theme';
+import { Background, DashboardWrapper, GridWrapper, SecondaryButton } from '../../utils/theme';
 
 const Tile = styled.div`
   display: flex;
@@ -8,11 +9,16 @@ const Tile = styled.div`
   font-size: var(--font-size-l);
   background: rgba(150,150,150,0.7);
   padding: var(--space-l) var(--space-xl);
+
+  button {
+    justify-content: center;
+  }
 `
 
 export default function Dashboard() {
   const poolLiquidity = 212232405;
   const userLiquidity = 20002;
+  const history = useHistory()
   return (
     <DashboardWrapper>
       <Background/>
@@ -21,36 +27,35 @@ export default function Dashboard() {
           <h4>
             Current Liquidity
           </h4>
-          <p>$212,232,405</p>
-          <p>Ξ117,906</p>
+          <p>$212,232,405 / Ξ117,906</p><br/>
+          <h4>
+            Your Liquidity
+          </h4>
+          <p>$20,002 / Ξ11.11</p>
+          <p>{userLiquidity/poolLiquidity*100}%</p>
         </Tile>
         <Tile>
           <h4>
             NFTs owned by Liquidity Pool
           </h4>
-          <p>5</p>
-        </Tile>
-        <Tile>
+          <p>5</p><br/>
           <h4>
-            Your Liquidity
+            Total worth
           </h4>
-          <p>$20,002</p>
-          <p>Ξ11.11</p>
-          <p>{userLiquidity/poolLiquidity*100}%</p>
+          <p>Ξ127,320</p>
         </Tile>
         <Tile>
           <h4>
             Your Collateral
           </h4>
-          <p>Ξ7.247</p>
-          <p>1 NFT</p>
-        </Tile>
-        <Tile>
+          <p>Ξ7247 (1 NFT)</p><br/>
           <h4>
             Your Borrowing Power
           </h4>
-          <p>Ξ7.247 * 50% = Ξ3.62</p>
-          <p>Your borrowing power is Ξ3.62</p>
+          <p>Ξ7247 * 50% = Ξ362</p><br/>
+          <SecondaryButton onClick={() => history.push('/app/borrow')}>Borrow Now</SecondaryButton>
+        </Tile>
+        <Tile>
         </Tile>
         <Tile>
           <h4>
@@ -66,7 +71,8 @@ export default function Dashboard() {
           </h4>
           <p>
             You can appraise your NFT to see how much loan you will be eligible for before depositing the NFT as collateral.
-          </p>
+          </p><br/>
+          <SecondaryButton onClick={() => history.push('/app/appraise')}>Appraise</SecondaryButton>
         </Tile>
         <Tile>
           <h4>

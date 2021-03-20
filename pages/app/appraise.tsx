@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import { mockNFTDetails } from '../../mock/mockData';
-import { ButtonWrapper, SecondaryButton, StyledInput, TextLink, Wrapper } from '../../utils/theme';
+import { ButtonWrapper, Hint, SecondaryButton, StyledInput, TextLink, Wrapper } from '../../utils/theme';
 import Units from 'ethereumjs-units'
 
 const Tile = styled.div`
@@ -52,38 +52,48 @@ const ImgWrapper = styled.div`
 
 export default function Appraise() {
   const [nftData, setNftData] = useState(mockNFTDetails)
-  const [contractAddress, setContractAddress] = useState("0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb")
-  const [tokenId, setTokenId] = useState("3011")
+  const [contractAddress, setContractAddress] = useState("")
+  const [tokenId, setTokenId] = useState("")
   const [isAppraising, setIsAppraising] = useState(false)
   const [passAppraisal, setPassAppraisal] = useState(false)
 
   function fetchData() {
     fetch(`https://api.opensea.io/api/v1/asset/${contractAddress}/${tokenId}`)
-      .then(response => response.json())
+      .then(response => {
+        if (response.status !== 200) {
+          console.error(`Error. Status code: ${response.status}`);
+          return
+        }
+        return response.json()
+      })
       .then(data => {
         setNftData(data)
+        setIsAppraising(true)
         appraise()
-      });
+      })
+      .catch(error => console.log(error))
   }
 
   function appraise() {
-    if (Units.convert(nftData?.last_sale?.total_price, 'wei', 'eth') >= 5 && nftData?.num_sales >= 2) {
+    if (Units.convert(nftData?.last_sale?.total_price, 'wei', 'eth') >= 8 && nftData?.num_sales >= 2) {
       setPassAppraisal(true)
     } else {
       setPassAppraisal(false)
     }
   }
 
-  useEffect(() => {
-    fetchData();
-  }, [contractAddress, tokenId]);
+  function handleAppraiseButtonOnClick() {
+    if (contractAddress != "" && tokenId != "") {
+      fetchData()
+    }
+  }
 
   return (
     <Wrapper>
       <Tile>
         <h3>Appraise NFT</h3>
         {
-          !isAppraising ?
+          !(isAppraising && nftData) ?
           <NFTidWrapper>
             <div>
               <span>NFT Contract Address</span>
@@ -91,8 +101,6 @@ export default function Appraise() {
                 title="Token Amount"
                 inputMode="decimal"
                 type="text"
-                placeholder="NFT contract address"
-                defaultValue="0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb"
                 onChange={event => setContractAddress(event.target.value)}
               />
             </div>
@@ -102,8 +110,6 @@ export default function Appraise() {
                 title="Token Amount"
                 inputMode="decimal"
                 type="text"
-                placeholder="NFT token ID"
-                defaultValue="3011"
                 onChange={event => setTokenId(event.target.value)}
               />
             </div>
@@ -127,8 +133,16 @@ export default function Appraise() {
           </NFTDetailsWrapper>
           : 
           <ButtonWrapper>
-            <SecondaryButton onClick={() => setIsAppraising(true)}>Appraise</SecondaryButton>
+            <SecondaryButton
+              onClick={handleAppraiseButtonOnClick}
+              disabled={contractAddress == "" || tokenId == ""}
+            >Appraise</SecondaryButton>
           </ButtonWrapper>
+        }
+        {
+          isAppraising && !nftData ?
+          <Hint>No NFT found. Please try again.</Hint>
+          : <></>
         }
       </Tile>
     </Wrapper>
