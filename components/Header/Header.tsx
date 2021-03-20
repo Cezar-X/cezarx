@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Logo } from '../Logo'
 import { Account } from './Account'
 import { Balance } from './Balance'
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -76,9 +76,15 @@ export function Header() {
   return (
     <StyledHeader>
       <MenuSubwrapper>
+      {isLanding ?
         <a href="/">
           <Logo width="100" height="20"/>
         </a>
+        :
+        <Link to="/app/dashboard">
+          <Logo width="100" height="20"/>
+        </Link>
+      }
       </MenuSubwrapper>
       {
         isLanding ? 
@@ -89,12 +95,10 @@ export function Header() {
           : 
           <>
             <Menu>
-              <StyledLink activeClassName='is-active' to="/app/dashboard">Dashboard</StyledLink>
               <StyledLink activeClassName='is-active' to="/app/deposit">Deposit</StyledLink>
-              <StyledLink activeClassName='is-active' to="/app/borrow">Borrow</StyledLink>
               <StyledLink activeClassName='is-active' to="/app/appraise">Appraise</StyledLink>
               <StyledLink activeClassName='is-active' to="/app/auction">Auction</StyledLink>
-              <StyledLink activeClassName='is-active' to="/app/underconstruction">Stats</StyledLink>
+              <StyledLink activeClassName='is-active' to="/faq">FAQ</StyledLink>
             </Menu>
             <MenuSubwrapper>
               <UserDetails>

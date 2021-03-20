@@ -1,5 +1,6 @@
-import { Button, Pane, Paragraph, Select, Tab, Tablist, TextInput } from 'evergreen-ui'
+import { Select } from 'evergreen-ui'
 import React, { useState } from 'react'
+import { useHistory } from "react-router-dom"
 import styled from 'styled-components'
 import { Balance } from '../../components/Header/Balance'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -59,10 +60,19 @@ const CopyWrapper = styled.div`
   }
 `
 
+const CTAWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: var(--space-l) 0 var(--space-xs);
+`
+
 export default function Deposit() {
   const [isNFT, setIsNFT] = useState(false)
   const [copied, setCopied] = useState(false)
   const contractAddress = "0x123213213313213313213313213313213345435"
+  const history = useHistory()
 
   const copyAddress = function() {
     setCopied(true)
@@ -96,6 +106,10 @@ export default function Deposit() {
               {copied ? <span>Copied!</span> : null }
             </CopyWrapper>
             <Hint>If your NFT does not meet our appraisal criteria, it will be rejected.</Hint>
+            <CTAWrapper>
+              <p>Already deposited the NFT?</p>
+              <SecondaryButton onClick={() => history.push('/app/borrow')}>Borrow Now</SecondaryButton>
+            </CTAWrapper>
           </>
           : 
           <>
