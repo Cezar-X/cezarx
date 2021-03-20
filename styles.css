@@ -11,7 +11,9 @@
   --bg-blue: #33343d;
   --bg-blue-light: #565656;
   --green: #30bd03;
-  --body-text-color: #efefe3;
+  --body-text-color: #e8e8e3;
+  --grey-light: #b3b3b1;
+  --grey-lighter: #dedada;
   --grey-lightest: #ededed;
   --box-shadow: 0 8px 12px rgba(0,0,0,0.06);
 }

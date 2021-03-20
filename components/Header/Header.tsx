@@ -1,8 +1,10 @@
 import React from 'react'
-import styled from 'styled-components';
-import { Logo } from '../Logo';
-import { Account } from './Account';
-import { Balance } from './Balance';
+import { useRouter } from 'next/router'
+import styled from 'styled-components'
+import { Logo } from '../Logo'
+import { Account } from './Account'
+import { Balance } from './Balance'
+import { Link } from 'evergreen-ui'
 
 const StyledHeader = styled.div`
   display: flex;
@@ -10,6 +12,27 @@ const StyledHeader = styled.div`
   align-items: center;
   padding: var(--space-m);
 `;
+
+const Menu = styled.div`
+  display: flex;
+  align-items: center;
+  justify-self: flex-end;
+  margin: 0 var(--space-m) 0 auto;
+
+  a {
+    margin: 0 var(--space-s);
+  }
+`;
+
+const StyledLink = styled(Link)`
+  font-size: var(--font-size-m);
+  color: var(--body-text-color);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--grey-light);
+  }
+`
 
 const UserDetails = styled.div`
   display: flex;
@@ -24,15 +47,33 @@ const UserDetails = styled.div`
   }
 `;
 
-
 export function Header() {
+  const router = useRouter();
+  const isLanding = router.pathname == "/";
+
   return (
     <StyledHeader>
-      <Logo width="100" height="20"/>
-      <UserDetails>
-        <Account />
-        <Balance />
-      </UserDetails>
+      <Link href="/">
+        <Logo width="100" height="20"/>
+      </Link>
+      {
+        isLanding ? 
+          <Menu>
+            <StyledLink href="/faq">FAQ</StyledLink>
+            <StyledLink href="/about">About</StyledLink>
+          </Menu>
+          : 
+          <>
+            <Menu>
+              <StyledLink href="/app/dashboard">Dashboard</StyledLink>
+              <StyledLink href="/app/deposit">Deposit</StyledLink>
+            </Menu>
+            <UserDetails>
+              <Account />
+              <Balance />
+            </UserDetails>
+          </>
+      }
     </StyledHeader>
   )
 }
