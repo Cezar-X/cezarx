@@ -2,9 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy&display=swap');
 
 :root {
-  --font-size-xl: 30px;
-  --font-size-l: 24px;
+  --body-height: calc(100vh - 66px);
+  --font-size-xxxl: 40px;
+  --font-size-xxl: 30px;
+  --font-size-xl: 24px;
+  --font-size-l: 20px;
   --font-size-m: 16px;
+  --space-xxxl: 80px;
+  --space-xxl: 60px;
   --space-xl: 40px;
   --space-l: 30px;
   --space-m: 20px;
@@ -16,6 +21,10 @@
   --bg-blue-light: #565656;
   --green: #30bd03;
   --body-text-color: #e8e8e3;
+  --grey-darkest: #232323;
+  --grey-darker: #666666;
+  --grey-dark: #888888;
+  --grey: #aaaaaa;
   --grey-light: #b3b3b1;
   --grey-lighter: #dedada;
   --grey-lightest: #ededed;
@@ -27,14 +36,55 @@
 }
 
 body {
+  min-height: 100vh;
   font-size: var(--font-size-m);
   font-family: 'Inter', sans-serif;
   color: var(--body-text-color);
-  background-color: var(--bg-blue);
+  background: rgb(129,129,129);
+  background: radial-gradient(circle, rgb(59, 59, 59) 0%, rgb(37, 37, 37) 28%, rgba(2,0,36,1) 100%);
+  background-size: 300%;
+  background-repeat: no-repeat;
   margin: 0;
+  -webkit-animation: AnimationName 20s ease infinite;
+  -moz-animation: AnimationName 20s ease infinite;
+  animation: AnimationName 20s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 72%}
+  50%{background-position:100% 29%}
+  100%{background-position:0% 72%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 72%}
+  50%{background-position:100% 29%}
+  100%{background-position:0% 72%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 72%}
+  50%{background-position:100% 29%}
+  100%{background-position:0% 72%}
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 button {
   color: var(--bg-blue);
   border: 1px solid var(--grey-lightest);
+}
+
+h1 {
+  font-size: var(--font-size-xxl);
+}
+
+h4 {
+  margin: var(--space-xxs) 0;
+}
+
+p {
+  margin: var(--space-xxxs) 0;
 }
