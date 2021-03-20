@@ -28,7 +28,7 @@
   --grey-light: #b3b3b1;
   --grey-lighter: #dedada;
   --grey-lightest: #ededed;
-  --box-shadow: 0 8px 12px rgba(0,0,0,0.06);
+  --box-shadow: 0 8px 20px rgba(255,255,255,0.32);
 }
 
 * {
@@ -81,6 +81,7 @@ h1 {
   font-size: var(--font-size-xxl);
 }
 
+h3,
 h4 {
   margin: var(--space-xxs) 0;
 }

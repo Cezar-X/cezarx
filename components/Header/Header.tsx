@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Logo } from '../Logo'
 import { Account } from './Account'
 import { Balance } from './Balance'
-import { Link } from 'evergreen-ui'
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -53,23 +53,23 @@ export function Header() {
 
   return (
     <StyledHeader>
-      <Link href="/">
+      <a href="/">
         <Logo width="100" height="20"/>
-      </Link>
+      </a>
       {
         isLanding ? 
           <Menu>
-            <StyledLink href="/faq">FAQ</StyledLink>
-            <StyledLink href="/about">About</StyledLink>
+            <StyledLink to="/faq">FAQ</StyledLink>
+            <StyledLink to="/about">About</StyledLink>
           </Menu>
           : 
           <>
             <Menu>
-              <StyledLink href="/app/dashboard">Dashboard</StyledLink>
-              <StyledLink href="/app/deposit">Deposit</StyledLink>
-              <StyledLink href="/app/borrow">Borrow</StyledLink>
-              <StyledLink href="/app/auction">Auction</StyledLink>
-              <StyledLink href="/app/stats">Stats</StyledLink>
+              <StyledLink to="/app/dashboard">Dashboard</StyledLink>
+              <StyledLink to="/app/deposit">Deposit</StyledLink>
+              <StyledLink to="/app/borrow">Borrow</StyledLink>
+              <StyledLink to="/app/auction">Auction</StyledLink>
+              <StyledLink to="/app/stats">Stats</StyledLink>
             </Menu>
             <UserDetails>
               <Account />

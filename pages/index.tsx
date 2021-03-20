@@ -1,7 +1,9 @@
 import React from 'react'
 import router from 'next/router'
+import { StaticRouter } from 'react-router-dom'
 import { Button } from 'evergreen-ui'
 import styled from 'styled-components'
+import { Header } from '../components/Header/Header'
 
 const LandingBanner = styled.div`
   display: flex;
@@ -76,6 +78,9 @@ const StyledButton = styled(Button)`
 export default function Landing() {
   return (
     <>
+      <StaticRouter>
+        <Header/>
+      </StaticRouter>
       <LandingBanner>
         <div>
           <q>Render unto Caesar the things which are Caesar's, and unto God the things that are God's.</q>

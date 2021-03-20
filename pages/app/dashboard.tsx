@@ -21,7 +21,7 @@ const Tile = styled.div`
   margin: var(--space-l);
 `
 
-export default function() {
+export default function Dashboard() {
   const poolLiquidity = 212232405;
   const userLiquidity = 20002;
   return (
