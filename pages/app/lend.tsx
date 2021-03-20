@@ -69,43 +69,41 @@ const CTAWrapper = styled.div`
 `
 
 export default function Lend() {
-  const [isNFT, setIsNFT] = useState(false)
-  const [copied, setCopied] = useState(false)
-  const contractAddress = "0x123213213313213313213313213313213345435"
-  const history = useHistory()
-
-  const copyAddress = function() {
-    setCopied(true)
-    setTimeout(function() {
-      setCopied(false)
-    }, 600)
-  }
+  const [lent, setLent] = useState(false)
 
   return (
     <Wrapper>
-      <Tile>
-        <h3>
-          Lend WETH
-        </h3>
-        <p>
-          Available Balance: <Balance /><br/>
-          Deposit APY: 13%
-        </p>
-        <InputWrapper>
-          <StyledInput
-            title="Token Amount"
-            inputMode="decimal"
-            type="number"
-            placeholder="0.0"
-            minLength={1}
-            maxLength={20}
-          />
-          WETH
-        </InputWrapper>
-        <ButtonWrapper>
-          <SecondaryButton>Deposit</SecondaryButton>
-        </ButtonWrapper>
-      </Tile>
+      {
+        !lent ? 
+          <Tile>
+          <h3>Lend WETH</h3>
+          <p>
+            Available Balance: <Balance /><br/>
+            Deposit APY: 13%
+          </p>
+          <InputWrapper>
+            <StyledInput
+              title="Token Amount"
+              inputMode="decimal"
+              type="number"
+              placeholder="0.0"
+              minLength={1}
+              maxLength={20}
+            />
+            WETH
+          </InputWrapper>
+          <ButtonWrapper>
+            <SecondaryButton onClick={() => setLent(true)}>Deposit</SecondaryButton>
+          </ButtonWrapper>
+        </Tile>
+        : 
+        <Tile>
+          <h3>Deposit Successful</h3>
+          <p>
+            You have received 1,803 czWETH. They represent your stake in the liquidity pool.
+          </p>
+        </Tile>
+      }
     </Wrapper>
   )
 }

@@ -90,7 +90,7 @@ export function Header() {
         isLanding ? 
           <Menu>
             <StyledLink activeClassName='is-active' to="/faq">FAQ</StyledLink>
-            <StyledLink activeClassName='is-active' to="/about">About</StyledLink>
+            <StyledLink activeClassName='is-active' to="/app/underconstruction">About</StyledLink>
           </Menu>
           : 
           <>
@@ -98,7 +98,7 @@ export function Header() {
               <StyledLink activeClassName='is-active' to="/app/borrow">Borrow</StyledLink>
               <StyledLink activeClassName='is-active' to="/app/lend">Lend</StyledLink>
               <StyledLink activeClassName='is-active' to="/app/auction">Auction</StyledLink>
-              <StyledLink activeClassName='is-active' to="/faq">FAQ</StyledLink>
+              <StyledLink activeClassName='is-active' to="/app/underconstruction">FAQ</StyledLink>
             </Menu>
             <MenuSubwrapper>
               <UserDetails>

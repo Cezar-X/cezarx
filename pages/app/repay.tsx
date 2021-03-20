@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useHistory } from "react-router-dom"
 import styled from 'styled-components'
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { ButtonWrapper, Hint, InputWrapper, SecondaryButton, StyledInput, Wrapper } from '../../utils/theme'
+import { ButtonWrapper, SecondaryButton, Wrapper } from '../../utils/theme'
 
 const Tile = styled.div`
   display: flex;

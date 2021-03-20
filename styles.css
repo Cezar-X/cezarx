@@ -46,25 +46,6 @@ body {
   background-size: 300%;
   background-repeat: no-repeat;
   margin: 0;
-  -webkit-animation: AnimationName 20s ease infinite;
-  -moz-animation: AnimationName 20s ease infinite;
-  animation: AnimationName 20s ease infinite;
-}
-
-@-webkit-keyframes AnimationName {
-  0%{background-position:0% 72%}
-  50%{background-position:100% 29%}
-  100%{background-position:0% 72%}
-}
-@-moz-keyframes AnimationName {
-  0%{background-position:0% 72%}
-  50%{background-position:100% 29%}
-  100%{background-position:0% 72%}
-}
-@keyframes AnimationName {
-  0%{background-position:0% 72%}
-  50%{background-position:100% 29%}
-  100%{background-position:0% 72%}
 }
 
 #__next {
