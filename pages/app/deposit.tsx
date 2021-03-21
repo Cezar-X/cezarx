@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import styled from 'styled-components'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Hint, SecondaryButton, Wrapper } from '../../utils/theme'
-import AppWrapper from '../../components/appWrapper';
+import AppWrapper from '../../components/AppWrapper';
 import { Link } from 'evergreen-ui';
 
 const Tile = styled.div`

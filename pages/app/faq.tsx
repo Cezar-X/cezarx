@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import AppWrapper from '../../components/appWrapper';
+import AppWrapper from '../../components/AppWrapper';
 import { Wrapper } from '../../utils/theme';
 
 const Tile = styled.div`

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { ButtonWrapper, SecondaryButton, Wrapper } from '../../utils/theme';
-import AppWrapper from '../../components/appWrapper';
+import AppWrapper from '../../components/AppWrapper';
 import Link from 'next/link';
 
 const Tile = styled.div`

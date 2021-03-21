@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { mockNFTDetails } from '../../mock/mockData';
 import { ButtonWrapper, Hint, ImgWrapper, SecondaryButton, StyledInput, TextLink, Wrapper } from '../../utils/theme';
 import Units from 'ethereumjs-units'
-import AppWrapper from '../../components/appWrapper';
 import { Link } from 'evergreen-ui';
+import AppWrapper from '../../components/AppWrapper';
 
 const Tile = styled.div`
   display: flex;
