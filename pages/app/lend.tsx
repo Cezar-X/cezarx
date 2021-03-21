@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Balance } from '../../components/Header/Balance'
 import { ButtonWrapper, InputWrapper, SecondaryButton, StyledInput, Wrapper } from '../../utils/theme'
-import AppWrapper from '../../components/appWrapper'
+import AppWrapper from '../../components/AppWrapper'
 
 const Tile = styled.div`
   display: flex;
