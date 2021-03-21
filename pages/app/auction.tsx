@@ -14,7 +14,7 @@ const AuctionPageWrapper = styled.div`
   position: relative;
   font-size: var(--font-size-l);
   min-height: var(--body-height);
-  padding-top: var(--space-xl);
+  padding: var(--space-xl) 0 var(--space-xl);
 
   h3 {
     color: var(--grey-darkest);
