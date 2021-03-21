@@ -22,7 +22,8 @@ export default class Root extends App {
       <>
         <Web3ReactProvider getLibrary={getLibrary}>
           <Head>
-            <title>CezarX</title>
+            <title>CezarX - Collateral Lending Protocol</title>
+            <link rel="shortcut icon" href="/images/favicon.png" />
           </Head>
           <Component/>
         </Web3ReactProvider>

@@ -68,15 +68,20 @@ export default function Appraise() {
         return response.json()
       })
       .then(data => {
-        setNftData(data)
+        console.log("data: ", data)
         setIsAppraising(true)
+        setNftData(data)
         appraise()
       })
       .catch(error => console.log(error))
   }
 
   function appraise() {
-    if (Units.convert(nftData?.last_sale?.total_price, 'wei', 'eth') >= 8 && nftData?.num_sales >= 2) {
+    if (!nftData?.last_sale) {
+      setPassAppraisal(false)
+      return
+    }
+    if (parseInt(Units.convert(nftData?.last_sale?.total_price, 'wei', 'eth')) >= 8 && nftData?.num_sales >= 2) {
       setPassAppraisal(true)
     } else {
       setPassAppraisal(false)
@@ -90,7 +95,6 @@ export default function Appraise() {
   }
 
   function processOpenSeaURL(event) {
-    console.log("url: ", event.target.value)
     const url = event.target.value
     const regexPattern = /^(https:\/\/opensea.io\/assets\/).+\/\d+/g
     if (url.match(regexPattern)) {
@@ -128,15 +132,19 @@ export default function Appraise() {
           isAppraising && nftData ? 
           <NFTDetailsWrapper>
             <ImgWrapper>
-              <img src={nftData?.image_url} />
+              <img src={nftData?.image_url || nftData?.asset_contract?.image_url} />
             </ImgWrapper>
             <h4>{nftData?.name}</h4>
             <p>
-              Last Sale Price: Ξ{Units.convert(nftData?.last_sale?.total_price, 'wei', 'eth')}<br/>
+              { nftData?.last_sale ? <> Last Sale Price: Ξ{Units.convert(nftData?.last_sale?.total_price, 'wei', 'eth')}<br/></> : null }
               Total Number of Sales: {nftData?.num_sales}
             </p>
             <p>
-              This NFT has met our collateral criteria. <TextLink to="/app/deposit">Deposit</TextLink> it now to start borrowing!
+              {
+                passAppraisal ? 
+                <>This NFT has met our collateral criteria. <TextLink to="/app/deposit">Deposit</TextLink> it now to start borrowing!</>
+                : `This NFT has not met our collateral criteria. Try with another NFT.`
+              }
             </p>
           </NFTDetailsWrapper>
           : 

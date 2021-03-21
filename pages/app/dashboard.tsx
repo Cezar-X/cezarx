@@ -6,6 +6,7 @@ import { Background, DashboardWrapper, GridWrapper, SecondaryButton } from '../.
 const Tile = styled.div`
   display: flex;
   flex-direction: column;
+  height: 280px;
   font-size: var(--font-size-l);
   background: rgba(150,150,150,0.7);
   padding: var(--space-l) var(--space-xl);
@@ -13,6 +14,13 @@ const Tile = styled.div`
   button {
     justify-content: center;
     margin-top: auto;
+  }
+
+  a {
+    color: var(--grey-light);
+    &:hover {
+      color: var(--grey);
+    }
   }
 `
 
@@ -37,13 +45,19 @@ export default function Dashboard() {
         </Tile>
         <Tile>
           <h4>
-            NFTs owned by Liquidity Pool
+            Blue-Chip NFTs
           </h4>
-          <p>5</p><br/>
+          <p>
+            Unique and limited edition artwork, collectibles and real estate from the metaverse.
+          </p>
+        </Tile>
+        <Tile>
           <h4>
-            Total worth
+            Your Open Loan
           </h4>
-          <p>Ξ127,320</p>
+          <p>Ξ2717.5 + 20% APR for 40 days</p>
+          <p>Countdown: 13d 23h 18m</p>
+          <SecondaryButton onClick={() => history.push('/app/repay')}>Repay Now</SecondaryButton>
         </Tile>
         <Tile>
           <h4>
@@ -54,34 +68,6 @@ export default function Dashboard() {
           </p>
         </Tile>
         <Tile>
-          <h4>
-            Exclusive Auctions
-          </h4>
-          <p>
-            When the loans default, the NFTs will be owned by the liquidity pool. Liquidity pool providers will be eligible to participate in the NFT auction held on a later date.
-          </p>
-        </Tile>
-        <Tile>
-          <h4>
-            Your Collateral
-          </h4>
-          <p>Ξ5,435 (1 NFT)</p><br/>
-          <h4>
-            Your Borrowing Power
-          </h4>
-          <p>Ξ0</p>
-          <SecondaryButton onClick={() => history.push('/app/borrowNoCollateral')}>Borrow Now</SecondaryButton>
-        </Tile>
-        <Tile>
-          <h4>
-            Appraise Your NFT
-          </h4>
-          <p>
-            Check your NFT to see if it will be accepted as collateral.
-          </p>
-          <SecondaryButton onClick={() => history.push('/app/appraise')}>Appraise</SecondaryButton>
-        </Tile>
-        <Tile>
           <h4>NFT Auction on 30 Apr</h4>
           <p>
             Provide liquidity of more than Ξ5 before 28 Apr 00:00 UTC to get a chance to participate in the auction! 
@@ -90,11 +76,19 @@ export default function Dashboard() {
         </Tile>
         <Tile>
           <h4>
-            Your Open Loan
+            Your Collateral
           </h4>
-          <p>Ξ2717.5 + 20% APR for 40 days</p>
-          <p>Countdown: 13d 23h 18m</p>
-          <SecondaryButton onClick={() => history.push('/app/repay')}>Repay Now</SecondaryButton>
+          <p>Ξ5,435 (1 NFT)</p>
+          <p>Le Anime #355/1573</p>
+          <p>
+            Contract:&nbsp;
+            <a 
+              href="https://etherscan.io/address/0x1124330b91faadfc211ab5cb3125f7259e943083"
+              rel="nofollow noopener "
+              target="_blank"
+            >0x1124...3083</a>
+          </p>
+          <p>Token ID: 12800010355</p>
         </Tile>
       </GridWrapper>
     </DashboardWrapper>

@@ -84,8 +84,6 @@ export default function Landing() {
       <LandingBanner>
         <div>
           <q>Render unto Caesar the things which are Caesar's, and unto God the things that are God's.</q>
-          {/* <h1>Bringing Liquidity to NFTs</h1>
-          <p>CezarX is your one-stop platform for liquidity mining, taking out loans against your NFTs, participating in high-profile NFT auctions, and more</p> */}
           <StyledButton onClick={() => router.push('/app')}>Enter App</StyledButton>
         </div>
       </LandingBanner>

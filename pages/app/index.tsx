@@ -1,20 +1,20 @@
 import React from 'react'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
-import styled from 'styled-components';
 
 import { Header } from '../../components/Header/Header'
 import Web3ReactManager from '../../components/Web3ReactManager';
+import UnderConstruction from './underconstruction';
+import { DashboardWrapper, Background } from '../../utils/theme';
 import Lend from './lend';
 import Dashboard from './dashboard';
 import Borrow from './borrow';
 import Auction from './auction';
 import Appraise from './appraise';
-import UnderConstruction from './underconstruction';
-import { DashboardWrapper, Background } from '../../utils/theme';
 import Deposit from './deposit';
 import BorrowNoCollateral from './borrowNoCollateral';
 import Repay from './repay';
 import Repaid from './repaid';
+import FAQ from './faq';
 
 export default function() {
   return (
@@ -85,6 +85,7 @@ function App() {
               <Route exact path="/app/deposit" component={Deposit} />
               <Route exact path="/app/auction" component={Auction} />
               <Route exact path="/app/appraise" component={Appraise} />
+              <Route exact path="/app/faq" component={FAQ} />
               <Route exact path="/app/underconstruction" component={UnderConstruction} />
               <Redirect to="/app/dashboard" />
             </Switch>

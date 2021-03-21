@@ -56,6 +56,35 @@ const StyledLink = styled(NavLink)`
   }
 `
 
+const StyledMenuLink = styled.a`
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: var(--font-size-m);
+  color: var(--body-text-color);
+  text-decoration: none;
+
+  &:hover,
+  &.is-active {
+    color: var(--grey-light);
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 50%;
+    bottom: 0;
+    background: linear-gradient(12deg, rgba(129,129,129,1) 0%, rgba(139,139,139,1) 52%, rgba(115,115,115,1) 100%);
+    transform: translateX(-50%);
+    transition: all 0.15s;
+  }
+`
+
 const UserDetails = styled.div`
   display: flex;
   justify-content: center;
@@ -86,28 +115,27 @@ export function Header() {
         </Link>
       }
       </MenuSubwrapper>
-      {
-        isLanding ? 
-          <Menu>
-            <StyledLink activeClassName='is-active' to="/faq">FAQ</StyledLink>
-            <StyledLink activeClassName='is-active' to="/app/underconstruction">About</StyledLink>
-          </Menu>
-          : 
-          <>
-            <Menu>
-              <StyledLink activeClassName='is-active' to="/app/borrow">Borrow</StyledLink>
-              <StyledLink activeClassName='is-active' to="/app/lend">Lend</StyledLink>
-              <StyledLink activeClassName='is-active' to="/app/auction">Auction</StyledLink>
-              <StyledLink activeClassName='is-active' to="/app/underconstruction">FAQ</StyledLink>
-            </Menu>
-            <MenuSubwrapper>
-              <UserDetails>
-                <Account />
-                <Balance />
-              </UserDetails>
-            </MenuSubwrapper>
-          </>
+      {isLanding ?
+      <Menu>
+        <StyledMenuLink href="/app/borrowNoCollateral">Borrow</StyledMenuLink>
+        <StyledMenuLink href="/app/lend">Lend</StyledMenuLink>
+        <StyledMenuLink href="/app/auction">Auction</StyledMenuLink>
+        <StyledMenuLink href="/app/faq">FAQ</StyledMenuLink>
+      </Menu>
+      :
+      <Menu>
+        <StyledLink activeClassName='is-active' to="/app/borrowNoCollateral">Borrow</StyledLink>
+        <StyledLink activeClassName='is-active' to="/app/lend">Lend</StyledLink>
+        <StyledLink activeClassName='is-active' to="/app/auction">Auction</StyledLink>
+        <StyledLink activeClassName='is-active' to="/app/faq">FAQ</StyledLink>
+      </Menu>
       }
+      <MenuSubwrapper>
+        <UserDetails>
+          <Account />
+          <Balance />
+        </UserDetails>
+      </MenuSubwrapper>
     </StyledHeader>
   )
 }
