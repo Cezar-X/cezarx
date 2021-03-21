@@ -1,11 +1,11 @@
 import { Web3ReactProvider } from '@web3-react/core'
 import { Web3Provider } from '@ethersproject/providers'
-import { Router } from 'react-router-dom'
 import App from 'next/app'
 import Head from 'next/head'
 import React from 'react'
 
 import '../styles.css'
+import Web3ReactManager from '../components/Web3ReactManager'
 
 function getLibrary(provider: any): Web3Provider {
   const library = new Web3Provider(provider)
@@ -25,7 +25,9 @@ export default class Root extends App {
             <title>CezarX - Collateral Lending Protocol</title>
             <link rel="shortcut icon" href="/images/favicon.png" />
           </Head>
-          <Component/>
+          <Web3ReactManager>
+            <Component/>
+          </Web3ReactManager>
         </Web3ReactProvider>
       </>
     )

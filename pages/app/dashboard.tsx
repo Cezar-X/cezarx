@@ -1,7 +1,8 @@
+import { Link } from 'evergreen-ui';
 import React from 'react'
-import { useHistory } from "react-router-dom"
 import styled from 'styled-components';
-import { Background, DashboardWrapper, GridWrapper, SecondaryButton } from '../../utils/theme';
+import AppWrapper from '../../components/appWrapper';
+import { GridWrapper, SecondaryButton } from '../../utils/theme';
 
 const Tile = styled.div`
   display: flex;
@@ -11,26 +12,28 @@ const Tile = styled.div`
   background: rgba(150,150,150,0.7);
   padding: var(--space-l) var(--space-xl);
 
-  button {
-    justify-content: center;
+  a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
     margin-top: auto;
   }
+`
 
-  a {
-    color: var(--grey-light);
-    &:hover {
-      color: var(--grey);
-    }
+const StyledLink = styled.a`
+  display: inline !important;
+  color: var(--grey-light);
+  text-decoration: underline;
+  &:hover {
+    color: var(--grey);
   }
 `
 
 export default function Dashboard() {
   const poolLiquidity = 212232405;
   const userLiquidity = 20002;
-  const history = useHistory()
   return (
-    <DashboardWrapper>
-      <Background/>
+    <AppWrapper>
       <GridWrapper>
         <Tile>
           <h4>
@@ -57,7 +60,9 @@ export default function Dashboard() {
           </h4>
           <p>Ξ2717.5 + 20% APR for 40 days</p>
           <p>Countdown: 13d 23h 18m</p>
-          <SecondaryButton onClick={() => history.push('/app/repay')}>Repay Now</SecondaryButton>
+          <Link href='/app/repay'>
+            <SecondaryButton>Repay Now</SecondaryButton>
+          </Link>
         </Tile>
         <Tile>
           <h4>
@@ -72,7 +77,9 @@ export default function Dashboard() {
           <p>
             Provide liquidity of more than Ξ5 before 28 Apr 00:00 UTC to get a chance to participate in the auction! 
           </p>
-          <SecondaryButton onClick={() => history.push('/app/lend')}>Add Liquidity</SecondaryButton>
+          <Link href='/app/lend'>
+            <SecondaryButton>Add Liquidity</SecondaryButton>
+          </Link>
         </Tile>
         <Tile>
           <h4>
@@ -82,15 +89,15 @@ export default function Dashboard() {
           <p>Le Anime #355/1573</p>
           <p>
             Contract:&nbsp;
-            <a 
+            <StyledLink 
               href="https://etherscan.io/address/0x1124330b91faadfc211ab5cb3125f7259e943083"
               rel="nofollow noopener "
               target="_blank"
-            >0x1124...3083</a>
+            >0x1124...3083</StyledLink>
           </p>
           <p>Token ID: 12800010355</p>
         </Tile>
       </GridWrapper>
-    </DashboardWrapper>
+    </AppWrapper>
   )
 }

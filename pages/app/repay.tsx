@@ -1,6 +1,7 @@
+import { Link } from 'evergreen-ui'
 import React from 'react'
-import { useHistory } from "react-router-dom"
 import styled from 'styled-components'
+import AppWrapper from '../../components/appWrapper'
 import { ButtonWrapper, SecondaryButton, Wrapper } from '../../utils/theme'
 
 const Tile = styled.div`
@@ -15,10 +16,6 @@ const Tile = styled.div`
   border-radius: 12px;
   box-shadow: var(--box-shadow);
 
-  input {
-    max-width: 80%;
-  }
-
   p {
     margin-bottom: var(--space-xs);
   }
@@ -26,25 +23,31 @@ const Tile = styled.div`
   h4 {
     text-align: center;
   }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 export default function Repay() {
-  const history = useHistory()
-
   return (
-    <Wrapper>
-      <Tile>
-        <h3>
-          Repay Loan
-        </h3>
-        <p>Loan Amount: Ξ2717.5</p>
-        <p>20% APR for 40 days</p>
-        <p>13d 23h 18m Until Deadline</p>
-        <h4>3074.86986 WETH</h4>
-        <ButtonWrapper>
-          <SecondaryButton onClick={() => history.push('/app/repaid')}>Pay Back Now</SecondaryButton>
-        </ButtonWrapper>
-      </Tile>
-    </Wrapper>
+    <AppWrapper>
+      <Wrapper>
+        <Tile>
+          <h3>
+            Repay Loan
+          </h3>
+          <p>Loan Amount: Ξ2717.5</p>
+          <p>20% APR for 40 days</p>
+          <p>13d 23h 18m Until Deadline</p>
+          <h4>3074.86986 WETH</h4>
+          <ButtonWrapper>
+            <Link href='/app/repaid'>
+              <SecondaryButton>Pay Back Now</SecondaryButton>
+            </Link>
+          </ButtonWrapper>
+        </Tile>
+      </Wrapper>
+    </AppWrapper>
   )
 }

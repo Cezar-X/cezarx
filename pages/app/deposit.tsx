@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom"
 import styled from 'styled-components'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Hint, SecondaryButton, Wrapper } from '../../utils/theme'
+import AppWrapper from '../../components/appWrapper';
+import { Link } from 'evergreen-ui';
 
 const Tile = styled.div`
   display: flex;
@@ -22,6 +24,10 @@ const Tile = styled.div`
 
   p {
     margin-bottom: var(--space-m);
+  }
+
+  a {
+    text-decoration: none;
   }
 `
 
@@ -71,27 +77,31 @@ export default function Deposit() {
   }
 
   return (
-    <Wrapper>
-      <Tile>
-        <h3>
-          Deposit NFT
-        </h3>
-        <p>
-          Please send your NFT to the following contract address.
-        </p>
-        <CopyWrapper>
-          <CopyToClipboard text={contractAddress}
-            onCopy={copyAddress}>
-            <CopyField value={contractAddress} />
-          </CopyToClipboard>
-          {copied ? <span>Copied!</span> : null }
-        </CopyWrapper>
-        <Hint>If your NFT does not meet our appraisal criteria, it will be returned to you immediately.</Hint>
-        <CTAWrapper>
-          <p>Already deposited the NFT?</p>
-          <SecondaryButton onClick={() => history.push('/app/borrow')}>Borrow Now</SecondaryButton>
-        </CTAWrapper>
-      </Tile>
-    </Wrapper>
+    <AppWrapper>
+      <Wrapper>
+        <Tile>
+          <h3>
+            Deposit NFT
+          </h3>
+          <p>
+            Please send your NFT to the following contract address.
+          </p>
+          <CopyWrapper>
+            <CopyToClipboard text={contractAddress}
+              onCopy={copyAddress}>
+              <CopyField value={contractAddress} />
+            </CopyToClipboard>
+            {copied ? <span>Copied!</span> : null }
+          </CopyWrapper>
+          <Hint>If your NFT does not meet our appraisal criteria, it will be returned to you immediately.</Hint>
+          <CTAWrapper>
+            <p>Already deposited the NFT?</p>
+            <Link href='/app/borrow'>
+              <SecondaryButton>Borrow Now</SecondaryButton>
+            </Link>
+          </CTAWrapper>
+        </Tile>
+      </Wrapper>
+    </AppWrapper>
   )
 }

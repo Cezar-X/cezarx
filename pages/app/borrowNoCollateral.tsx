@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components';
-import { useHistory } from "react-router-dom"
 import { ButtonWrapper, SecondaryButton, Wrapper } from '../../utils/theme';
+import AppWrapper from '../../components/appWrapper';
+import Link from 'next/link';
 
 const Tile = styled.div`
   display: flex;
@@ -25,19 +26,22 @@ const Tile = styled.div`
 `
 
 export default function BorrowNoCollateral() {
-  const history = useHistory()
   return (
-    <Wrapper>
-      <Tile>
-        <h3>Borrow WETH</h3>
-        <p>
-          Before you can borrow WETH, you'll have to first deposit a NFT.<br/><br/>
-          Let's check if your NFT is a suitable collateral!
-        </p>
-        <ButtonWrapper>
-          <SecondaryButton onClick={() => history.push('/app/appraise')}>Appraise NFT</SecondaryButton>
-        </ButtonWrapper>
-      </Tile>
-    </Wrapper>
+    <AppWrapper>
+      <Wrapper>
+        <Tile>
+          <h3>Borrow WETH</h3>
+          <p>
+            Before you can borrow WETH, you'll have to first deposit a NFT.<br/><br/>
+            Let's check if your NFT is a suitable collateral!
+          </p>
+          <ButtonWrapper>
+            <Link href="/app/appraise">
+              <SecondaryButton>Appraise NFT</SecondaryButton>
+            </Link>
+          </ButtonWrapper>
+        </Tile>
+      </Wrapper>
+    </AppWrapper>
   )
 }

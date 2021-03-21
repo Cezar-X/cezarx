@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { Button, Dialog } from 'evergreen-ui';
+import { Button } from 'evergreen-ui';
+import Link from 'next/link';
 
 export const StyledInput = styled.input`
   font-size: var(--font-size-l);
@@ -92,7 +92,8 @@ export const InputWrapper = styled.div`
   align-items: center;
 `
 
-export const TextLink = styled(Link)`
+export const TextLink = styled.a`
+
   color: var(--grey-darker);
 
   &:hover {
@@ -103,4 +104,11 @@ export const TextLink = styled(Link)`
 export const Hint = styled.p`
   font-size: var(--font-size-s);
   text-align: center;
+`
+
+export const ImgWrapper = styled.div`
+  img {
+    display: block;
+    width: 100%;
+  }
 `

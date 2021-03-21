@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Logo } from '../Logo'
 import { Account } from './Account'
 import { Balance } from './Balance'
-import { NavLink, Link } from "react-router-dom";
+import Link from 'next/link'
 
 const StyledHeader = styled.div`
   display: flex;
@@ -24,71 +24,40 @@ const Menu = styled.div`
 
   a {
     margin: 0 var(--space-s);
-  }
-`
-
-const StyledLink = styled(NavLink)`
-  display: flex;
-  align-items: center;
-  position: relative;
-  font-size: var(--font-size-m);
-  color: var(--body-text-color);
-  text-decoration: none;
-
-  &:hover,
-  &.is-active {
-    color: var(--grey-light);
-    &::after {
-      width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: var(--font-size-m);
+    color: var(--body-text-color);
+    text-decoration: none;
+  
+    &:hover,
+    &.is-active {
+      color: var(--grey-light);
+      &::after {
+        width: 100%;
+      }
     }
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    left: 50%;
-    bottom: 0;
-    background: linear-gradient(12deg, rgba(129,129,129,1) 0%, rgba(139,139,139,1) 52%, rgba(115,115,115,1) 100%);
-    transform: translateX(-50%);
-    transition: all 0.15s;
-  }
-`
-
-const StyledMenuLink = styled.a`
-  display: flex;
-  align-items: center;
-  position: relative;
-  font-size: var(--font-size-m);
-  color: var(--body-text-color);
-  text-decoration: none;
-
-  &:hover,
-  &.is-active {
-    color: var(--grey-light);
+  
     &::after {
-      width: 100%;
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 50%;
+      bottom: 0;
+      background: linear-gradient(12deg, rgba(129,129,129,1) 0%, rgba(139,139,139,1) 52%, rgba(115,115,115,1) 100%);
+      transform: translateX(-50%);
+      transition: all 0.15s;
     }
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    left: 50%;
-    bottom: 0;
-    background: linear-gradient(12deg, rgba(129,129,129,1) 0%, rgba(139,139,139,1) 52%, rgba(115,115,115,1) 100%);
-    transform: translateX(-50%);
-    transition: all 0.15s;
   }
 `
 
 const UserDetails = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  width: 270px;
   span {
     line-height: 1;
     padding: var(--space-xxxs) var(--space-xxs);
@@ -105,31 +74,32 @@ export function Header() {
   return (
     <StyledHeader>
       <MenuSubwrapper>
-      {isLanding ?
-        <a href="/">
-          <Logo width="100" height="20"/>
-        </a>
-        :
-        <Link to="/app/dashboard">
-          <Logo width="100" height="20"/>
+        <Link href={isLanding ? "/" : "/app/dashboard"}>
+          <a><Logo width="100" height="20"/></a>
         </Link>
-      }
       </MenuSubwrapper>
-      {isLanding ?
       <Menu>
-        <StyledMenuLink href="/app/borrowNoCollateral">Borrow</StyledMenuLink>
-        <StyledMenuLink href="/app/lend">Lend</StyledMenuLink>
-        <StyledMenuLink href="/app/auction">Auction</StyledMenuLink>
-        <StyledMenuLink href="/app/faq">FAQ</StyledMenuLink>
+        <Link href="/app/borrowNoCollateral">
+          <a 
+            className={router.pathname === "/app/borrowNoCollateral" ? "is-active" : ""}
+          >Borrow</a>
+        </Link>
+        <Link href="/app/lend">
+          <a 
+            className={router.pathname === "/app/lend" ? "is-active" : ""}
+          >Lend</a>
+          </Link>
+        <Link href="/app/auction">
+          <a 
+            className={router.pathname === "/app/auction" ? "is-active" : ""}
+          >Auction</a>
+        </Link>
+        <Link href="/app/faq">
+          <a
+            className={router.pathname === "/app/faq" ? "is-active" : ""}
+          >FAQ</a>
+        </Link>
       </Menu>
-      :
-      <Menu>
-        <StyledLink activeClassName='is-active' to="/app/borrowNoCollateral">Borrow</StyledLink>
-        <StyledLink activeClassName='is-active' to="/app/lend">Lend</StyledLink>
-        <StyledLink activeClassName='is-active' to="/app/auction">Auction</StyledLink>
-        <StyledLink activeClassName='is-active' to="/app/faq">FAQ</StyledLink>
-      </Menu>
-      }
       <MenuSubwrapper>
         <UserDetails>
           <Account />

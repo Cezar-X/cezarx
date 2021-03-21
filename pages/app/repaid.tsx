@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import React from 'react'
 import { useHistory } from "react-router-dom"
 import styled from 'styled-components'
+import AppWrapper from '../../components/appWrapper'
 import { ButtonWrapper, SecondaryButton, Wrapper } from '../../utils/theme'
 
 const Tile = styled.div`
@@ -26,22 +28,28 @@ const Tile = styled.div`
   h4 {
     text-align: center;
   }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 export default function Repaid() {
-  const history = useHistory()
-
   return (
-    <Wrapper>
-      <Tile>
-        <h3>
-          Loan Repaid
-        </h3>
-        <p>Thanks for the repayment. If you love NFTs, become our liquidity provider! We hold exclusive auctions from time to time for our liquidity providers.</p>
-        <ButtonWrapper>
-          <SecondaryButton onClick={() => history.push('/app/lend')}>Add Liquidity</SecondaryButton>
-        </ButtonWrapper>
-      </Tile>
-    </Wrapper>
+    <AppWrapper>
+      <Wrapper>
+        <Tile>
+          <h3>
+            Loan Repaid
+          </h3>
+          <p>Thanks for the repayment. If you love NFTs, become our liquidity provider! We hold exclusive auctions from time to time for our liquidity providers.</p>
+          <ButtonWrapper>
+            <Link href='/app/lend'>
+              <SecondaryButton>Add Liquidity</SecondaryButton>
+            </Link>
+          </ButtonWrapper>
+        </Tile>
+      </Wrapper>
+    </AppWrapper>
   )
 }

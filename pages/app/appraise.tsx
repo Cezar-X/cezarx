@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { mockNFTDetails } from '../../mock/mockData';
-import { ButtonWrapper, Hint, SecondaryButton, StyledInput, TextLink, Wrapper } from '../../utils/theme';
+import { ButtonWrapper, Hint, ImgWrapper, SecondaryButton, StyledInput, TextLink, Wrapper } from '../../utils/theme';
 import Units from 'ethereumjs-units'
+import AppWrapper from '../../components/appWrapper';
+import { Link } from 'evergreen-ui';
 
 const Tile = styled.div`
   display: flex;
@@ -40,13 +42,9 @@ const NFTidWrapper = styled.div`
 
 const NFTDetailsWrapper = styled.div`
   font-size: var(--font-size-m);
-`
 
-const ImgWrapper = styled.div`
-
-  img {
-    display: block;
-    width: 100%;
+  a {
+    font-size: var(--font-size-m) !important;
   }
 `
 
@@ -112,58 +110,61 @@ export default function Appraise() {
   }
 
   return (
-    <Wrapper>
-      <Tile>
-        <h3>Appraise NFT</h3>
-        {
-          !(isAppraising && nftData) ?
-          <NFTidWrapper>
-            <p>Paste the OpenSea link below.</p>
-            <div>
-              <span>NFT OpenSea URL</span>
-              <StyledInput
-                title="NFT OpenSea URL"
-                type="text"
-                onChange={processOpenSeaURL}
-              />
-            </div>
-            {isInvalidURL ? <Hint>Invalid OpenSea URL. Please try again.</Hint> : null}
-          </NFTidWrapper>
-          : null
-        }
-        {
-          isAppraising && nftData ? 
-          <NFTDetailsWrapper>
-            <ImgWrapper>
-              <img src={nftData?.image_url || nftData?.asset_contract?.image_url} />
-            </ImgWrapper>
-            <h4>{nftData?.name}</h4>
-            <p>
-              { nftData?.last_sale ? <> Last Sale Price: Ξ{Units.convert(nftData?.last_sale?.total_price, 'wei', 'eth')}<br/></> : null }
-              Total Number of Sales: {nftData?.num_sales}
-            </p>
-            <p>
-              {
-                passAppraisal ? 
-                <>This NFT has met our collateral criteria. <TextLink to="/app/deposit">Deposit</TextLink> it now to start borrowing!</>
-                : `This NFT has not met our collateral criteria. Try with another NFT.`
-              }
-            </p>
-          </NFTDetailsWrapper>
-          : 
-          <ButtonWrapper>
-            <SecondaryButton
-              onClick={handleAppraiseButtonOnClick}
-              disabled={contractAddress == "" || tokenId == ""}
-            >Appraise</SecondaryButton>
-          </ButtonWrapper>
-        }
-        {
-          isAppraising && !nftData ?
-          <Hint>No NFT found. Please try again.</Hint>
-          : <></>
-        }
-      </Tile>
-    </Wrapper>
+    <AppWrapper>
+      <Wrapper>
+        <Tile>
+          <h3>Appraise NFT</h3>
+          {
+            !(isAppraising && nftData) ?
+            <NFTidWrapper>
+              <p>Paste the OpenSea link below.</p>
+              <div>
+                <span>NFT OpenSea URL</span>
+                <StyledInput
+                  title="NFT OpenSea URL"
+                  type="text"
+                  onChange={processOpenSeaURL}
+                />
+              </div>
+              {isInvalidURL ? <Hint>Invalid OpenSea URL. Please try again.</Hint> : null}
+            </NFTidWrapper>
+            : null
+          }
+          {
+            isAppraising && nftData ? 
+            <NFTDetailsWrapper>
+              <ImgWrapper>
+                <img src={nftData?.image_url || nftData?.asset_contract?.image_url} />
+              </ImgWrapper>
+              <h4>{nftData?.name}</h4>
+              <p>
+                { nftData?.last_sale ? <> Last Sale Price: Ξ{Units.convert(nftData?.last_sale?.total_price, 'wei', 'eth')}<br/></> : null }
+                Total Number of Sales: {nftData?.num_sales}<br/>
+                { nftData?.last_sale && passAppraisal ? <> Potential Borrowing Power: Ξ{Units.convert(nftData?.last_sale?.total_price, 'wei', 'eth') / 2}<br/></> : null }
+              </p>
+              <p>
+                {
+                  passAppraisal ? 
+                  <>This NFT has met our collateral criteria. <Link href="/app/deposit"><TextLink>Deposit</TextLink></Link> it now to start borrowing!</>
+                  : `This NFT has not met our collateral criteria. Try with another NFT.`
+                }
+              </p>
+            </NFTDetailsWrapper>
+            : 
+            <ButtonWrapper>
+              <SecondaryButton
+                onClick={handleAppraiseButtonOnClick}
+                disabled={contractAddress == "" || tokenId == ""}
+              >Appraise</SecondaryButton>
+            </ButtonWrapper>
+          }
+          {
+            isAppraising && !nftData ?
+            <Hint>No NFT found. Please try again.</Hint>
+            : <></>
+          }
+        </Tile>
+      </Wrapper>
+    </AppWrapper>
   )
 }

@@ -14,18 +14,42 @@ const Tile = styled.div`
   margin: var(--space-l);
   border-radius: 12px;
   box-shadow: var(--box-shadow);
+
+  p {
+    margin-bottom: var(--space-m);
+
+    &:first-of-type {
+      margin-top: var(--space-s);
+    }
+
+    &:last-child {
+      text-align: center;
+    }
+  }
+
+  a {
+    color: var(--grey-light);
+    &:hover {
+      color: var(--grey);
+    }
+  }
 `
 
-export default function UnderConstruction() {
+export default function Borrow() {
   return (
     <AppWrapper>
       <Wrapper>
         <Tile>
-          <h3>Under Construction</h3>
+          <h3>Borrowed WETH</h3>
           <p>
-            Come back later!
+            Ξ2717.5 + 20% APR for 40 days
           </p>
-          <iframe src="https://giphy.com/embed/1wbV299AFXDaZLjj7j" width="100%" height="480" frameBorder="0" allowFullScreen></iframe>
+          <p>
+            Countdown: 39d 23h 59m
+          </p>
+          <p>
+            <a href="#">View on Etherscan</a>
+          </p>
         </Tile>
       </Wrapper>
     </AppWrapper>

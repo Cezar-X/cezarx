@@ -1,5 +1,7 @@
+import { Link } from 'evergreen-ui';
 import React from 'react'
 import styled from 'styled-components';
+import AppWrapper from '../../components/appWrapper';
 import { ButtonWrapper, InputWrapper, SecondaryButton, StyledInput, Wrapper } from '../../utils/theme';
 
 const Tile = styled.div`
@@ -21,32 +23,40 @@ const Tile = styled.div`
   p {
     margin-bottom: var(--space-m);
   }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 export default function Borrow() {
   return (
-    <Wrapper>
-      <Tile>
-        <h3>Borrow WETH</h3>
-        <p>
-          Borrowing Power: Ξ362<br/>
-          Interest Rate: 20% APR
-        </p>
-        <InputWrapper>
-          <StyledInput
-            title="Token Amount"
-            inputMode="decimal"
-            type="number"
-            placeholder="0.0"
-            minLength={1}
-            maxLength={20}
-          />
-          WETH
-        </InputWrapper>
-        <ButtonWrapper>
-          <SecondaryButton>Borrow</SecondaryButton>
-        </ButtonWrapper>
-      </Tile>
-    </Wrapper>
+    <AppWrapper>
+      <Wrapper>
+        <Tile>
+          <h3>Borrow WETH</h3>
+          <p>
+            Borrowing Power: Ξ362<br/>
+            Interest Rate: 20% APR
+          </p>
+          <InputWrapper>
+            <StyledInput
+              title="Token Amount"
+              inputMode="decimal"
+              type="number"
+              placeholder="0.0"
+              minLength={1}
+              maxLength={20}
+            />
+            WETH
+          </InputWrapper>
+          <ButtonWrapper>
+            <Link href="/app/borrowed">
+              <SecondaryButton>Borrow</SecondaryButton>
+            </Link>
+          </ButtonWrapper>
+        </Tile>
+      </Wrapper>
+    </AppWrapper>
   )
 }
