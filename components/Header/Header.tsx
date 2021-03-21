@@ -79,9 +79,9 @@ export function Header() {
         </Link>
       </MenuSubwrapper>
       <Menu>
-        <Link href="/app/borrowNoCollateral">
+        <Link href="/app/appraise">
           <a 
-            className={router.pathname === "/app/borrowNoCollateral" ? "is-active" : ""}
+            className={router.pathname === "/app/appraise" ? "is-active" : ""}
           >Borrow</a>
         </Link>
         <Link href="/app/lend">

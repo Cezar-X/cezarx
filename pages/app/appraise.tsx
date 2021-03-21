@@ -82,7 +82,7 @@ export default function Appraise() {
       setPassAppraisal(false)
       return
     }
-    if (parseInt(Units.convert(nftData?.last_sale?.total_price, 'wei', 'eth')) >= 8 && nftData?.num_sales >= 2) {
+    if (parseInt(Units.convert(nftData?.last_sale?.total_price, 'wei', 'eth')) >= 30 && nftData?.num_sales >= 1) {
       setPassAppraisal(true)
     } else {
       setPassAppraisal(false)
