@@ -8,7 +8,7 @@ contract GovToken is ERC20, AccessControl {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
 
-    constructor() public ERC20("Cezar Token", "CZK") {
+    constructor() public ERC20("Cezar Token", "CZR") {
         _setupRole(MINTER_ROLE, msg.sender);
         _setupRole(BURNER_ROLE, msg.sender);
     }
