@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { mockNFTDetails } from '../../mock/mockData';
 import { ButtonWrapper, Hint, SecondaryButton, StyledInput, TextLink, Wrapper } from '../../utils/theme';
@@ -68,15 +68,18 @@ export default function Appraise() {
         return response.json()
       })
       .then(data => {
-        console.log("data: ", data)
         setIsAppraising(true)
         setNftData(data)
-        appraise()
       })
       .catch(error => console.log(error))
   }
-
+  useEffect(() => {
+    appraise()
+  }, [nftData])
   function appraise() {
+    if (!nftData) {
+      return
+    }
     if (!nftData?.last_sale) {
       setPassAppraisal(false)
       return
