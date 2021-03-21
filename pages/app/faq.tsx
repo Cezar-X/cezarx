@@ -9,6 +9,7 @@ const Tile = styled.div`
   width: 800px;
   font-size: var(--font-size-l);
   color: var(--grey-darkest);
+  line-height: 1.5;
   background: white;
   padding: var(--space-l) var(--space-xl);
   margin: var(--space-l);
