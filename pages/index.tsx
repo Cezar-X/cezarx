@@ -78,9 +78,7 @@ const StyledButton = styled(Button)`
 export default function Landing() {
   return (
     <>
-      <StaticRouter>
-        <Header/>
-      </StaticRouter>
+      <Header/>
       <LandingBanner>
         <div>
           <q>Render unto Caesar the things which are Caesar's, and unto God the things that are God's.</q>

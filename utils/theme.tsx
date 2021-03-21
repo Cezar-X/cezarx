@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Button } from 'evergreen-ui';
-import Link from 'next/link';
 
 export const StyledInput = styled.input`
   font-size: var(--font-size-l);
@@ -55,7 +54,7 @@ export const Wrapper = styled.div`
   align-items: flex-start;
   position: relative;
   flex-wrap: wrap;
-  height: var(--body-height);
+  min-height: var(--body-height);
   padding-top: var(--space-xxxl);
   backdrop-filter: grayscale(92%) contrast(100%) brightness(40%);
 `

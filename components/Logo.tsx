@@ -1,20 +1,9 @@
 import React from 'react'
-import styled from 'styled-components';
 
 export function Logo({ width, height }) {
-  const Wrapper = styled.div`
-    width: ${width}px;
-    height: ${height}px;
-
-    svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  `;
   return (
-    <Wrapper>
-      <svg width="326.809" height="73.783" viewBox="0 0 326.809 73.783" xmlns="http://www.w3.org/2000/svg">
+    <div style={{"width": width+"px", "height": height+"px"}}>
+      <svg width="326.809" height="73.783" className="logo" viewBox="0 0 326.809 73.783" xmlns="http://www.w3.org/2000/svg">
         <g
           id="svgGroup"
           strokeLinecap="round"
@@ -30,6 +19,6 @@ export function Logo({ width, height }) {
           />
         </g>
       </svg>
-    </Wrapper>
+    </div>
   )
 }
