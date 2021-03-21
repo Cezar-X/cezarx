@@ -56,6 +56,7 @@ export default function Appraise() {
   const [tokenId, setTokenId] = useState("")
   const [isAppraising, setIsAppraising] = useState(false)
   const [passAppraisal, setPassAppraisal] = useState(false)
+  const [isInvalidURL, setIsInvalidURL] = useState(false)
 
   function fetchData() {
     fetch(`https://api.opensea.io/api/v1/asset/${contractAddress}/${tokenId}`)
@@ -88,6 +89,21 @@ export default function Appraise() {
     }
   }
 
+  function processOpenSeaURL(event) {
+    console.log("url: ", event.target.value)
+    const url = event.target.value
+    const regexPattern = /^(https:\/\/opensea.io\/assets\/).+\/\d+/g
+    if (url.match(regexPattern)) {
+      const idPart = url.split("https://opensea.io/assets/")[1]
+      const idParts = idPart.split("/")
+      setIsInvalidURL(false)
+      setContractAddress(idParts[0])
+      setTokenId(idParts[1])
+    } else {
+      setIsInvalidURL(true)
+    }
+  }
+
   return (
     <Wrapper>
       <Tile>
@@ -95,24 +111,16 @@ export default function Appraise() {
         {
           !(isAppraising && nftData) ?
           <NFTidWrapper>
+            <p>Paste the OpenSea link below.</p>
             <div>
-              <span>NFT Contract Address</span>
+              <span>NFT OpenSea URL</span>
               <StyledInput
-                title="Token Amount"
-                inputMode="decimal"
+                title="NFT OpenSea URL"
                 type="text"
-                onChange={event => setContractAddress(event.target.value)}
+                onChange={processOpenSeaURL}
               />
             </div>
-            <div>
-              <span>NFT Token ID</span>
-              <StyledInput
-                title="Token Amount"
-                inputMode="decimal"
-                type="text"
-                onChange={event => setTokenId(event.target.value)}
-              />
-            </div>
+            {isInvalidURL ? <Hint>Invalid OpenSea URL. Please try again.</Hint> : null}
           </NFTidWrapper>
           : null
         }
