@@ -67,45 +67,70 @@ const UserDetails = styled.div`
   }
 `;
 
+const Banner = styled.div`
+  color: var(--grey-darkest);
+  font-size: var(--font-size-s);
+  font-weight: bold;
+  padding: var(--space-xxs);
+  background: linear-gradient(12deg, rgb(144, 144, 144) 0%, rgb(180, 180, 180) 52%, rgba(120,120,127,1) 100%);
+  text-align: center;
+  a {
+    display: inline-block;
+    color: #093183;
+    margin-left: var(--space-m);
+    &:hover {
+      color: var(--grey-darkest);
+    }
+  }
+`
+
 export function Header() {
   const router = useRouter();
   const isLanding = router.pathname == "/";
 
   return (
-    <StyledHeader>
-      <MenuSubwrapper>
-        <Link href={isLanding ? "/" : "/app/dashboard"}>
-          <a><Logo width="100" height="20"/></a>
-        </Link>
-      </MenuSubwrapper>
-      <Menu>
-        <Link href="/app/appraise">
-          <a 
-            className={router.pathname === "/app/appraise" ? "is-active" : ""}
-          >Borrow</a>
-        </Link>
-        <Link href="/app/lend">
-          <a 
-            className={router.pathname === "/app/lend" ? "is-active" : ""}
-          >Lend</a>
+    <>
+      <Banner>
+        <p>
+          This is an open source project. You are free to use the code base for development.
+          <a href="https://github.com/Cezar-X/cezarx" target="_blank">View full project details here</a>
+        </p>
+      </Banner>
+      <StyledHeader>
+        <MenuSubwrapper>
+          <Link href={isLanding ? "/" : "/app/dashboard"}>
+            <a><Logo width="100" height="20"/></a>
           </Link>
-        <Link href="/app/auction">
-          <a 
-            className={router.pathname === "/app/auction" ? "is-active" : ""}
-          >Auction</a>
-        </Link>
-        <Link href="/app/faq">
-          <a
-            className={router.pathname === "/app/faq" ? "is-active" : ""}
-          >FAQ</a>
-        </Link>
-      </Menu>
-      <MenuSubwrapper>
-        <UserDetails>
-          <Account />
-          <Balance />
-        </UserDetails>
-      </MenuSubwrapper>
-    </StyledHeader>
+        </MenuSubwrapper>
+        <Menu>
+          <Link href="/app/appraise">
+            <a 
+              className={router.pathname === "/app/appraise" ? "is-active" : ""}
+            >Borrow</a>
+          </Link>
+          <Link href="/app/lend">
+            <a 
+              className={router.pathname === "/app/lend" ? "is-active" : ""}
+            >Lend</a>
+            </Link>
+          <Link href="/app/auction">
+            <a 
+              className={router.pathname === "/app/auction" ? "is-active" : ""}
+            >Auction</a>
+          </Link>
+          <Link href="/app/faq">
+            <a
+              className={router.pathname === "/app/faq" ? "is-active" : ""}
+            >FAQ</a>
+          </Link>
+        </Menu>
+        <MenuSubwrapper>
+          <UserDetails>
+            <Account />
+            <Balance />
+          </UserDetails>
+        </MenuSubwrapper>
+      </StyledHeader>
+    </>
   )
 }
