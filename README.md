@@ -20,11 +20,17 @@ This is the main smart contract of our dApp. It holds the funds sent by liquidit
 Methods:
 
 newLoan -> when someone wants to get a loan from our platform, after the appraisal is done and the maximum amount they can borrow is displayed, they will need to send the NFT to our NFTHolder SC (that implements the Receiver interface) and then this method will be called from our UI, with all the loan details filled in by the user. If all the conditions are met (the liquidity pool holds at least 5 times more WETH than the requested amount and the NFT was sent to our contract) the requested amount will be sent to the borrower
+
 loanPaid -> when the user wants to pay the loan, he will see in the UI the debt amount. He will do the transaction from his wallet and input the tx hash for us to check if the loan was paid. Then, this method will be called so that the loan record for this borrower will be deleted and his NFT will be sent back to him
+
 getLoanData -> a getter function that returns the details of user’s loan
+
 loanDefault -> this method can be called by anyone that monitors the current loans and it will check if the loan period has indeed passed. In the case of a default, the NFT placed as collateral will be marked as auctionable in the Auctionable Smart Contract
+
 depositTokens -> this method is for the liquidity providers to transfer their WETH to our pool. Firstly, it checks if the MasterWallet SC was approved by the WETH owner to spend the amount the owner wants to stake. In this case, it will transfer this amount from the owner's balance to itself and mint an equal amount of czWETH tokens to the liquidity provider’s wallet. These tokens represent their contribution to our pool.
+
 withdrawFund -> this method can be called by a liquidity provider who wants to withdraw their WETH from our Wallet. It checks the corresponding czWETH balance of the user and if it’s higher than the withdraw amount, the WETh is transferred from our Wallet back to the provider and an equivalent amount of czWETH is burned from their wallet.
+
 getBalanceofSC -> returns the WETH balance of the MasterWallet
 
 There are also some governance methods that can only be called by the account that deployed the smart contract. In the future, we aim to create a DAO that will handle the governance.
