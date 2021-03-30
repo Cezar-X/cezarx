@@ -10,8 +10,10 @@ The project is unmaintained post-hackathon. The hackathon ended at 12pm 21 March
 The webapp is designed on the fly while being built on the frontend so we skipped using any kind of design tools. The app is built in React using the Web3-React template. (https://github.com/NoahZinsmeister/web3-react) Next.js is used for server-side rendering. Styles and most frontend components are being built from scratch. We also used external libraries for several frontend components like the dialog from evergreen-ui for wallet connection selection, react-countdown for the countdown on the auction page, and evergreen-ui again for the table on the auction page.
 
 For the smart contract, we wrote 7 Smart Contracts to enable our dApp to provide the required functionality:
-	- for liquidity providers: to send their WETH to our MasterWallet and earn interest, have the chance to participate in the exclusive actions we hold for the NFTs whose owners defaulted on their loan, withdraw their stake
-	- for NFT owners: to get a loan depending on their NFT value and the available liquidity, pay the debt+interest and received their NFT back
+
+- for liquidity providers: to send their WETH to our MasterWallet and earn interest, have the chance to participate in the exclusive actions we hold for the NFTs whose owners defaulted on their loan, withdraw their stake
+
+- for NFT owners: to get a loan depending on their NFT value and the available liquidity, pay the debt+interest and received their NFT back
 
 #### MasterWallet
 
